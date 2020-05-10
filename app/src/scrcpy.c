@@ -74,7 +74,8 @@ sdl_init_and_configure(bool display, const char *render_driver) {
 
 #ifdef _WIN32
     // Clean up properly on Ctrl+C on Windows
-    bool ok = SetConsoleCtrlHandler(windows_ctrl_handler, TRUE);
+    bool ok = SetConsoleCtrlHandler((PHANDLER_ROUTINE) windows_ctrl_handler,
+                                    TRUE);
     if (!ok) {
         LOGW("Could not set Ctrl+C handler");
     }
